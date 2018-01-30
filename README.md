@@ -11,5 +11,7 @@ This script uses colorspace conversions in order to map the Guild Wars 2 Dye Sys
 # Usage
 In order to run this script, you must first clone or download the zip file from this repository and then unzip it. Then follow the following steps:
 1. Navigate in your command line/terminal to your folder that contains the files in this repository.
-2. While in the directory containing "gw2_dye_schemer.py" run the following command: python gw2_dye_schemer.py [DYE NAME HERE] (type the name of the dye you want where it says "[DYE NAME HERE]" without the quotes or brackets. eg. If you want Sky Dye, type "Sky" or "sky", case does not matter. Spelling does!)
+2. While in the directory containing "gw2_dye_schemer.py" run the following command:
+    python gw2_dye_schemer.py [DYE NAME HERE]
+(type the name of the dye you want where it says "[DYE NAME HERE]" without the quotes or brackets. eg. If you want Sky Dye, type "Sky" or "sky", case does not matter. Spelling does!)
 3. Enjoy the results!
