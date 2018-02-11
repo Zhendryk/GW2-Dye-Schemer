@@ -51,8 +51,8 @@ def get_nearest_dye(rgb_y, material):
 			min_name = name
 	return min_name
 
-def get_monochromatic_dyes(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_monochromatic_dyes(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	monochrome_rgb_1 = colors.get_monochromatic_color(rgb[0], rgb[1], rgb[2], 0.2)[1]
 	monochrome_rgb_2 = colors.get_monochromatic_color(rgb[0], rgb[1], rgb[2], 0.4)[1]
@@ -60,39 +60,39 @@ def get_monochromatic_dyes(dye_id, material):
 	monochromatic_dye_2 = get_nearest_dye(monochrome_rgb_2, material)
 	return [monochromatic_dye_1, monochromatic_dye_2]
 
-def get_complimentary_dye(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_complimentary_dye(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	complimentary_rgb = colors.get_complimentary_color(rgb[0], rgb[1], rgb[2])[1]
 	complimentary_dye = get_nearest_dye(complimentary_rgb, material)
 	return [complimentary_dye]
 
-def get_split_complimentary_dyes(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_split_complimentary_dyes(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	split_comp_rgb = colors.get_split_complimentary(rgb[0], rgb[1], rgb[2])
 	split_comp_dye_1 = get_nearest_dye(split_comp_rgb[1], material)
 	split_comp_dye_2 = get_nearest_dye(split_comp_rgb[2], material)
 	return [split_comp_dye_1, split_comp_dye_2]
 
-def get_analogous_dyes(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_analogous_dyes(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	analogous_rgb = colors.get_analogous_colors(rgb[0], rgb[1], rgb[2])
 	analogous_1 = get_nearest_dye(analogous_rgb[1], material)
 	analogous_2 = get_nearest_dye(analogous_rgb[2], material)
 	return [analogous_1, analogous_2]
 
-def get_triadic_dyes(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_triadic_dyes(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	triadic_rgb = colors.get_triadic_colors(rgb[0], rgb[1], rgb[2])
 	triadic_dye_1 = get_nearest_dye(triadic_rgb[1], material)
 	triadic_dye_2 = get_nearest_dye(triadic_rgb[2], material)
 	return [triadic_dye_1, triadic_dye_2]
 
-def get_tetradic_dyes(dye_id, material):
-	dye = dyes_data[dye_id]
+def get_tetradic_dyes(dye_name, material):
+	dye = dye_map[dye_name]
 	rgb = dye[material]['rgb']
 	tetradic_rgb = colors.get_tetradic_colors(rgb[0], rgb[1], rgb[2])
 	tetradic_dye_1 = get_nearest_dye(tetradic_rgb[1], material)
@@ -102,14 +102,13 @@ def get_tetradic_dyes(dye_id, material):
 
 def get_dye_scheme(dye_name, material):
 	if dye_name.lower() in dye_map:
-		dye_id = dye_map[dye_name.lower()]['id']
-		print("\nColor Schemes for " + dyes_data[dye_id]['name'] + " (" + material + "): ")
-		print("Monochromatic Dyes for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_monochromatic_dyes(dye_id, material)))
-		print("Complimentary Dye for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_complimentary_dye(dye_id, material)))
-		print("Split-Complimentary Dyes for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_split_complimentary_dyes(dye_id, material)))
-		print("Analogous Dyes for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_analogous_dyes(dye_id, material)))
-		print("Triadic Dyes for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_triadic_dyes(dye_id, material)))
-		print("Tetradic Dyes for " + dyes_data[dye_id]['name'] + " (" + material + "): " + str(get_tetradic_dyes(dye_id, material)))
+		print("\nColor Schemes for " + dye_name + " (" + material + "): ")
+		print("Monochromatic Dyes for " + dye_name + " (" + material + "): " + str(get_monochromatic_dyes(dye_name, material)))
+		print("Complimentary Dye for " + dye_name + " (" + material + "): " + str(get_complimentary_dye(dye_name, material)))
+		print("Split-Complimentary Dyes for " + dye_name + " (" + material + "): " + str(get_split_complimentary_dyes(dye_name, material)))
+		print("Analogous Dyes for " + dye_name + " (" + material + "): " + str(get_analogous_dyes(dye_name, material)))
+		print("Triadic Dyes for " + dye_name + " (" + material + "): " + str(get_triadic_dyes(dye_name, material)))
+		print("Tetradic Dyes for " + dye_name + " (" + material + "): " + str(get_tetradic_dyes(dye_name, material)))
 		print("\n")
 	else:
 		print("Error: No such dye exists. Check your spelling or that you are asking for an existing dye.")
